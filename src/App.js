@@ -9,30 +9,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      products:[
-        // {
-        //   price:99,
-        //   title:"Watch",
-        //   qty: 1,
-        //   img:"https://images.pexels.com/photos/277390/pexels-photo-277390.jpeg?cs=srgb&dl=pexels-pixabay-277390.jpg&fm=jpg",
-        //   id:1
-        // },
-        // {
-        //   price:999,
-        //   title:"Mobile Phone",
-        //   qty:10,
-        //   img:"https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bW9iaWxlJTIwcGhvbmV8ZW58MHx8MHx8fDA%3D&w=1000&q=80",
-        //   id:2
-        // },
-        // {
-        //   price:999,
-        //   title:"laptop",
-        //   qty:4,
-        //   img:"https://cdn.mos.cms.futurecdn.net/CwpGTq5SSqWiafeEcWCnZJ-320-80.jpg",
-        //   id:3
-        // }
-    ],
-    loading:true,
+      products:[],
+      loading:true
     }
 }
 
@@ -116,7 +94,7 @@ getTotalPrice =() =>{
   }
 
   render() {
-    const {products}=this.state;
+    const {products,loading}=this.state;
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
@@ -125,6 +103,7 @@ getTotalPrice =() =>{
         OnIncreaseQuantity={this.handleIncreaseQuantity}
         OnDecreaseQuantity={this.handleDecreaseQuantity}
         OnDeleteProduct={this.handleDeletingProduct}
+        product={products}
         />
         {loading && <h1>Loding Products ... </h1>}
         <div style={{fontSize:20,padding:10}}>TOTAL:{this.getTotalPrice()}</div>
